@@ -1,0 +1,162 @@
+Aplicación de Decisiones Conjuntas con Deslizamiento (Swipe)
+nombres:
+TwinsVote
+TwoSides
+VeilVote
+
+Descripción:
+
+La aplicación permite a los usuarios deslizar a la derecha para aceptar una película, serie, restaurante o actividad, y deslizar a la izquierda para rechazarla.
+ De esta manera, las decisiones se toman de forma dinámica y rápida. Además, se puede agregar un sistema de votación por consenso para cada opción.
+Características Principales con Deslizamiento:
+
+    Deslizar para Aceptar o Rechazar:
+        Los usuarios verán opciones de películas, series, actividades o restaurantes como tarjetas (similar a cómo funcionan las tarjetas de Tinder).
+        Deslizar a la derecha: Aceptas la opción.
+        Deslizar a la izquierda: Rechazas la opción.
+        La tarjeta desaparece y aparece la siguiente opción.
+
+    Votación Final de Aceptación:
+        Después de que todos los usuarios hayan deslizado sus opciones, la aplicación muestra una lista de las opciones más aceptadas.
+        Los usuarios pueden votar nuevamente si alguna opción es muy popular o si están indecisos.
+
+    Interfaz Visual de Películas, Series y Actividades:
+        Cada tarjeta mostrará la imagen o miniatura de la película, serie, o actividad, con su título y una pequeña descripción.
+        Si es una película o serie, se integrará un pequeño icono que indique en qué plataforma está disponible (Netflix, Amazon, etc.),
+    
+
+    Animaciones de Deslizamiento:
+        Cada tarjeta se desliza hacia la izquierda o hacia la derecha con una animación suave.
+     
+
+    Chat Integrado para Discutir Opciones:
+        Los usuarios pueden intercambiar opiniones en un chat antes de deslizar para tomar decisiones juntos.
+        El chat será útil para discutir si una opción vale la pena o no, lo que hará que la dinámica de deslizamiento sea más divertida y colaborativa.
+
+    Recordatorios y Notificaciones:
+        La app enviará notificaciones para recordarles a los usuarios que deslicen antes de que termine el tiempo para votar.
+        Después de votar, se enviará una notificación para mostrar la opción ganadora (por ejemplo, la película o restaurante seleccionado).
+
+Flujo de Usuario:
+
+    Inicio de la sesión:
+        Los usuarios se registran y crean una nueva lista de opciones, ya sea para decidir qué ver, qué hacer o elegir.
+
+    Agregar opciones:
+        Los usuarios marcan las  opciones (películas, series, actividades, restaurantes, etc.) que desean para la lista.
+
+    Deslizar para elegir/rechazar:
+        Cada usuario verá una tarjeta con la opción propuesta (por ejemplo, una película), y debe deslizar hacia la derecha para aceptarla o hacia la izquierda para rechazarla.
+        Las opciones se siguen presentando en orden hasta que todos hayan votado.
+
+    Mostrar resultados:
+        Después de que todos hayan deslizado, la app muestra una lista de las opciones más populares y finaliza la votación.
+        Los usuarios pueden ver qué opción ganó y si alguna se rechazó por todos.
+
+    Calificación y Comentarios:
+        Después de realizar la actividad o ver la película, los usuarios pueden calificarla con estrellas o dejar comentarios.
+
+Diseño y Animaciones (Uso de CSS y JavaScript):
+
+    HTML Estructura Básica:
+
+<div id="swipe-container">
+    <div class="swipe-card" id="card1">
+        <img src="movie-poster.jpg" alt="Movie Poster">
+        <h3>Movie Title</h3>
+        <p>Movie Description</p>
+        <span class="platform">Netflix</span>
+    </div>
+    <!-- Más tarjetas aquí -->
+</div>
+
+CSS para el Deslizamiento:
+
+    Usamos CSS Grid o Flexbox para las tarjetas.
+    Aplicamos transformaciones para hacer que las tarjetas se deslicen a la izquierda o derecha cuando el usuario las "arrastra".
+
+#swipe-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.swipe-card {
+    width: 300px;
+    height: 450px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    position: absolute;
+}
+
+.swipe-card img {
+    width: 100%;
+    height: 70%;
+    border-radius: 10px 10px 0 0;
+}
+
+.swipe-card h3, .swipe-card p {
+    text-align: center;
+    padding: 10px;
+}
+
+.swipe-card.accepted {
+    transform: translateX(100%); /* Deslizar hacia la derecha */
+}
+
+.swipe-card.rejected {
+    transform: translateX(-100%); /* Deslizar hacia la izquierda */
+}
+
+JavaScript para Detectar el Deslizamiento: Usamos JavaScript para detectar el movimiento de las tarjetas y aplicar las animaciones de deslizamiento.
+
+    let cards = document.querySelectorAll('.swipe-card');
+    let currentIndex = 0;
+
+    cards.forEach(card => {
+        card.addEventListener('touchstart', startSwipe);
+        card.addEventListener('touchend', endSwipe);
+    });
+
+    function startSwipe(event) {
+        // Detectar el inicio del toque (deslizar)
+        this.startX = event.touches[0].clientX;
+    }
+
+    function endSwipe(event) {
+        // Detectar el final del toque y el desplazamiento
+        let endX = event.changedTouches[0].clientX;
+        let difference = endX - this.startX;
+
+        if (difference > 50) {
+            // Deslizar a la derecha: Aceptar
+            this.classList.add('accepted');
+        } else if (difference < -50) {
+            // Deslizar a la izquierda: Rechazar
+            this.classList.add('rejected');
+        }
+
+        // Mover al siguiente elemento
+        setTimeout(() => {
+            currentIndex++;
+            if (currentIndex < cards.length) {
+                cards[currentIndex].classList.remove('accepted', 'rejected');
+            }
+        }, 300);
+    }
+
+    Notificaciones y Recordatorios: Puedes implementar notificaciones utilizando la API de notificaciones de JavaScript o integrar Firebase para gestionar las notificaciones push.
+
+Tecnologías Sugeridas:
+
+    Frontend: HTML, CSS, JavaScript (con un framework como React si prefieres algo más robusto).
+    Backend (opcional): Firebase, Node.js + Express, o cualquier otra solución backend para gestionar usuarios y datos.
+    API de Películas/Series: OMDb, JustWatch, o The Movie Database (TMDb) para obtener información sobre películas y plataformas de streaming.
+
+Resumen:
+
+Esta aplicación sería una manera divertida y dinámica de que las parejas o amigos decidan qué hacer o qué ver. El deslizamiento para aceptar o rechazar opciones, junto con un sistema de votación y un chat integrado, hará que la experiencia sea interactiva y colaborativa. Además, la integración con plataformas de streaming permitirá hacer decisiones informadas rápidamente.
+
+¡Con estas características, tu aplicación será una experiencia divertida y práctica!

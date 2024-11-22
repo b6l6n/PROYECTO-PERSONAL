@@ -1,0 +1,88 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fuentes */
+body {
+    font-family: Arial, sans-serif;
+    background-color: greenyellow;
+    color: orange;
+}
+
+/* LOGO DEL SITIO */
+.logo {
+    text-align: center;
+    padding: 20px;
+    
+}
+
+.logo img {
+    width: 30px;
+}
+
+/* Estilos de la Cabecera */
+.cabecera {
+    display: flexbox;
+    align-items: center;
+    background-color: rgb(247, 125, 145);
+}
+
+.inicio h2 {
+    font-size: 36px;
+    color: black;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.inicio p {
+    font-size: 18px;
+    color: brown;
+    text-align: center;
+   
+}
+
+/* Menú de navegación */
+.menu {
+    text-align: center;
+    margin-top: 40px;
+ 
+}
+
+.menu ul {
+    list-style: none;
+;
+}
+
+.menu ul li {
+    display:flex;
+    justify-content: center;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.menu ul li a:hover {
+    background-color: black;
+}
+
+/* Estilo para el footer */
+footer {
+    background-color: purple;
+    padding: 20px;
+    text-align: center;
+    color: black;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

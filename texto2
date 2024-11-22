@@ -1,0 +1,8 @@
+la aplicacion va ha estar estructurada por partes y distintas paginas, empezando por el inicio/menu
+en este se ven las opciones principales donde, cuando, que, chat y perfil(tipo instagram)
+cada uno de estos va a tener submenu por ejemplo donde (lugar) tendria de sub menu el clima que hace(modo swipwe) posiblemente el timpo actualizado
+y tambien un rango de hora (mañana,tarde y noche)en el chat se puede concretar la hora exacta.
+
+va a modo de listas de usuarios: las personas añaden sus sitios,planes, pelis,comidas...favoritas en listas segun la clase 
+y la app te lo sugiere en base de gustos
+para empezar para que no este vacio pndre yo 10 cosas favoritas mias que sera el predeterminado de la app (en sus listas correspondientes 10 en cada)
