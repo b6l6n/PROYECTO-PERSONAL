@@ -1,0 +1,107 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fuentes */
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: greenyellow;
+    color: black;
+}
+
+/* LOGO */
+.logo {
+    text-align: center;
+    padding: 5px;
+    
+}
+
+.logo img {
+    width: 30px;
+}
+
+/* Estilos de la Cabecera */
+.cabecera {
+    text-align: center;
+    display: flexbox;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+    background-color: rgb(247, 125, 145);
+    color: black;
+    }
+
+    inicio h1 {
+        font-size: 36px;
+        color: black;
+        text-align: center;
+        margin-top: 20px;
+    
+    }
+    
+    .inicio p {
+        font-size: 18px;
+        color: brown;
+        text-align: center;
+       
+    }
+  
+
+/* Contenedor de la Tarjeta */
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    margin-top: 30px;
+  }
+  
+  /* Efecto de elevación al pasar el ratón */
+  .card:hover {
+    transform: translateY(-10px); 
+  }
+  
+  .imgpeli {
+    width: 50%;
+  }
+  
+  
+  /* Botones de Acción */
+  .actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  button {
+    width: 45%;
+    padding: 12px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .si {
+    background-color: purple;
+  }
+ 
+  .no {
+    background-color: purple;
+  }
+  
+  button:hover {
+    opacity: 0.9;
+  }
